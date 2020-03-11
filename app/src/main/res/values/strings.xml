@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Puissance4_test</string>
+    <string name="player">Joueur 1 Couleur Rouge à toi de jouer</string>
 </resources>

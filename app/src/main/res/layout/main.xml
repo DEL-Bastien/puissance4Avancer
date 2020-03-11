@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="fill_parent"
-              android:layout_height="fill_parent"
-              android:weightSum="1"
-              android:id="@+id/layout">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:weightSum="1">
 
 
     <TextView
@@ -16,16 +17,74 @@
         android:textColor= "#ffea00"
         android:textSize="36sp"
         android:textAlignment="center"/>
-    <Button
+
+    <TextView
+        android:id="@+id/titreNbJoueur"
+        android:layout_width="379dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="30dp"
+        android:text="Nombre de joueurs"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-condensed-medium" />
+
+
+    <Switch
+        android:id="@+id/btnNbJ2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2 Joueurs      "
+        android:textSize="18sp" />
+
+    <Switch
+        android:id="@+id/btnNbJ3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3 Joueurs      "
+        android:textSize="18sp" />
+
+    <Switch
+        android:id="@+id/btnNbJ4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4 Joueurs      "
+        android:textSize="18sp" />
+
+    <Switch
+        android:id="@+id/btnNbJ5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="5 Joueurs      "
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/titreTaillePlateau"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Parametre"
-        android:alpha="0.7"
-        android:textSize="28dp"
-        android:id="@+id/btnParam"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.10"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginBottom="5dp"
+        android:text="Taille du plateau"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:fontFamily="sans-serif-condensed-medium" />
+
+    <EditText
+        android:id="@+id/editTxtHauteur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Hauteur du plateau entre 4 et 9"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/editTxtLargeur"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:ems="10"
+        android:hint="Largeur du plateau entre 4 et 9"
+        android:inputType="number" />
+
 
     <Button
         android:id="@+id/btnJeu"

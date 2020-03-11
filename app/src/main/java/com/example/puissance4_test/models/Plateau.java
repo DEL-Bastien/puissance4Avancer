@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Plateau implements Cloneable {
     private static Plateau instance;
     public Space[][] spaces;
-    public static int width = 5;
-    public static int height = 5;
+    public static int width = Param.getWidth();
+    public static int height = Param.getHeight();
 
     private Plateau(int width, int height) {
         this.width = width;

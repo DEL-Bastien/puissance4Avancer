@@ -5,7 +5,8 @@ public enum  Color {
     YELLOW("#ffe033"),
     CYAN("#11fff5"),
     BLUE("#11fff5"),
-    FUSCHIA("#b51aff"),
+    MAGENTA("#ff00ff"),
+    //FUSCHIA("#ff00ff"),
     GREEN("#38ff19");
     private String codeHex;
 

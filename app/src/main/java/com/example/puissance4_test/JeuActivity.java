@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.puissance4_test.models.Color;
 import com.example.puissance4_test.models.Joueur;
+import com.example.puissance4_test.models.Param;
 import com.example.puissance4_test.models.Plateau;
 import com.example.puissance4_test.views.PlateauView;
 
@@ -18,8 +20,8 @@ public class JeuActivity extends Activity implements View.OnClickListener,GameAc
     private Button btnQuit;
     private PlateauView plateauView;
     private JeuActivity currentIntent = this;
+    private EditText ordre;
     private Context context;
-    private int nbJoueur = 2;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,26 +31,30 @@ public class JeuActivity extends Activity implements View.OnClickListener,GameAc
         plateauView.setActivity(this);
         btnQuit = findViewById(R.id.btnLeave);
         btnQuit.setOnClickListener(this);
+        ordre = findViewById(R.id.joueurOrdre);
         context= JeuActivity.this;
         Plateau.renew();
-        if (nbJoueur == 2){
+        if (Param.getNbJoueur() == 2) {
             new Joueur(Color.RED);
             new Joueur(Color.YELLOW);
-        } else if (nbJoueur == 3){
-            new Joueur(Color.RED);
-            new Joueur(Color.YELLOW);
-            new Joueur(Color.GREEN);
-        } else if (nbJoueur == 4) {
+        }
+        if (Param.getNbJoueur() == 3) {
             new Joueur(Color.RED);
             new Joueur(Color.YELLOW);
             new Joueur(Color.GREEN);
-            new Joueur(Color.FUSCHIA);
-        } else if (nbJoueur == 5){
+        }
+        if (Param.getNbJoueur() == 4) {
             new Joueur(Color.RED);
             new Joueur(Color.YELLOW);
             new Joueur(Color.GREEN);
-            new Joueur(Color.FUSCHIA);
             new Joueur(Color.CYAN);
+        }
+        if (Param.getNbJoueur() == 5) {
+            new Joueur(Color.RED);
+            new Joueur(Color.YELLOW);
+            new Joueur(Color.GREEN);
+            new Joueur(Color.CYAN);
+            new Joueur(Color.MAGENTA);
         }
 
     }
@@ -76,7 +82,6 @@ public class JeuActivity extends Activity implements View.OnClickListener,GameAc
                         });
                 AlertDialog alert = builderLeave.create();
                 alert.show();
-                //ringtone();
                 break;
         }
 
@@ -105,5 +110,10 @@ public class JeuActivity extends Activity implements View.OnClickListener,GameAc
 
         AlertDialog alert = builder.create();
         alert.show();
+    }
+
+    @Override
+    public void ordreJoueur(Joueur P) {
+        ordre.setText("C'est à Joueur " + P.getId() + " : Couleur " + P.getColor() + " de jouer");
     }
 }

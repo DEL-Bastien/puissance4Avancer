@@ -1,5 +1,6 @@
 package com.example.puissance4_test.views;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -9,12 +10,13 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
 
 import com.example.puissance4_test.GameActivity;
 import com.example.puissance4_test.models.Joueur;
-
-import com.example.puissance4_test.models.Space;
+import com.example.puissance4_test.models.Param;
 import com.example.puissance4_test.models.Plateau;
+import com.example.puissance4_test.models.Space;
 
 import java.util.LinkedList;
 
@@ -23,18 +25,20 @@ public class PlateauView extends View {
     DisplayMetrics metrics = this.getContext().getResources().getDisplayMetrics();
     int largeurScreen = metrics.widthPixels;
     int hauteurScreen =metrics.heightPixels;
-    int ligneNb = 5;
-    int coloneNb = 5;
+    int ligneNb = Param.getHeight();
+    int coloneNb = Param.getWidth();
     float longCell = largeurScreen / coloneNb;
     float hauteurJeu = longCell * ligneNb;
     LinkedList<PionView> pion;
     private Activity activity;
+    EditText joueurOrdre;
 
     public PlateauView(Context context, AttributeSet attrs) {
 
         super(context, attrs);
         this.initGUI(context);
         pion = new LinkedList<PionView>();
+
 
     }
 
@@ -47,6 +51,7 @@ public class PlateauView extends View {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     private void initGUI(Context context){
         paintGrid.setColor(Color.BLUE);
         paintGrid.setTextSize(20);
@@ -60,15 +65,82 @@ public class PlateauView extends View {
                 int col = getColumnFromPosition(x);
                 int lig = getRowFromPosition(y);
 
-                String strColor;
-                Joueur p;
-                if (pion.size() % 2 == 0) {
-                    p = Joueur.joueurs.get(0);
-                    strColor = p.getColor().name();
-                } else {
-                    p = Joueur.joueurs.get(1);
-                    strColor = p.getColor().name();
+                String strColor = null;
+                Joueur p = null;
+                if (Param.getNbJoueur() == 2) {
+                    if (pion.size() % 2 == 0) {
+                        p = Joueur.joueurs.get(0);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else {
+                        p = Joueur.joueurs.get(1);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    }
                 }
+                if (Param.getNbJoueur() == 3) {
+                    System.out.println(pion.size());
+                    if (pion.size() % 3 == 0) {
+                        p = Joueur.joueurs.get(0);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else if (pion.size() % 3 == 1) {
+                        p = Joueur.joueurs.get(1);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else {
+                        p = Joueur.joueurs.get(2);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    }
+                }
+
+                if (Param.getNbJoueur() == 4) {
+                    System.out.println(pion.size());
+                    if (pion.size() % 4 == 0) {
+                        p = Joueur.joueurs.get(0);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else if (pion.size() % 4 == 1) {
+                        p = Joueur.joueurs.get(1);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else if (pion.size() % 4 == 2) {
+                        p = Joueur.joueurs.get(2);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else {
+                        p = Joueur.joueurs.get(3);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    }
+                }
+
+                if (Param.getNbJoueur() == 5) {
+                    System.out.println(pion.size());
+                    if (pion.size() % 5 == 0) {
+                        p = Joueur.joueurs.get(0);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else if (pion.size() % 5 == 1) {
+                        p = Joueur.joueurs.get(1);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else if (pion.size() % 5 == 2) {
+                        p = Joueur.joueurs.get(2);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else if (pion.size() % 5 == 3) {
+                        p = Joueur.joueurs.get(3);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    } else {
+                        p = Joueur.joueurs.get(4);
+                        strColor = p.getColor().name();
+                        ((GameActivity) activity).ordreJoueur(p);
+                    }
+                }
+
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     Space s;
                     s = p.placePion(col);
